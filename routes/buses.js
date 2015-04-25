@@ -1,5 +1,6 @@
 /* GET home page. */
 
 exports.buses = function(req, res){
-  res.render('buses', { title: 'Buses' });
+	var cont='holis';
+  res.render('buses', { title: 'Buses',contenido: cont });
 };

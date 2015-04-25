@@ -2,33 +2,26 @@ extends layout
 
 block content
   h1= title
-  h2 Bienvenido al ABC de buses
+  h2 Bienvenido al Manejo de rutas
   a(href='/') Inicio
+  a(href='/buses') ABC buses
   br  
   div
-   h2 Modificar
-   form(action="/buses/raro2",method="post")
-      Ingrese el id del bus a modificar
+   h2 Crear Ruta
+   form(action="/rutas/crear",method="post")
+      Ingrese el nombre de la ruta
       br
-      input(type="number", name="idModificar"  min="0")
+      input(type="text", name="nombreRuta"  placeholder="ruta1")
       br
-      Ingrese la placa
+      Ingrese el origen
       br
-      input(type="text", name="placa") 
+      input(type="text", name="origen") 
       br
-      ingrese el modelo
+      ingrese el destino
       br
-      input(type="text", name="modelo")
+      input(type="text", name="destino")      
       br
-      ingrese el costo
-      br
-      input(type="number",min="0.01",step="0.01", name="costo")
-      br
-      ingrese 1 si es tipo economico o 2 si es ejecutivo
-      br
-      input(type="number", name="tipo" max="2" min="1")
-      br
-      input(type="submit", value="Modificar")
+      input(type="submit", value="Crear Ruta")
   div
    h2 Borrar       
     form(name="eliminarB", action="/buses/raro1", method="post")     
