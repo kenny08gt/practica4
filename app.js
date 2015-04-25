@@ -89,7 +89,6 @@ app.get('/buses#nogo', function(req, res) {
 });
 
 app.post('/buses/raro', function(req, res) {
-  var buses = require('./controllers/buses.js');
-//  buses.agregarTipoBus(req,res);
-    console.log("al fin!");
+    var buses = require('./otros/funciones.js');
+    buses.insertarBuses(req,res);    
 });
