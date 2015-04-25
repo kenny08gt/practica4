@@ -62,33 +62,28 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
+//Coneccion postgres
 var pg = require("pg");
-
 var conString = "pg://postgres:123456@localhost:5432/practicaf1";
 
-var client = new pg.Client(conString);
-console.log("prueba");
-client.connect();
-
-// client.query("CREATE TABLE IF NOT EXISTS emps(firstname varchar(64), lastname varchar(64))");
-// client.query("INSERT INTO emps(firstname, lastname) values($1, $2)", ['Ronald', 'McDonald']);
-// client.query("INSERT INTO emps(firstname, lastname) values($1, $2)", ['Mayor', 'McCheese']);
-
-var query = client.query("SELECT * from public.\"BUS\";");
-query.on("row", function (row, result) {
-    result.addRow(row);
-});
-query.on("end", function (result) {
-    console.log(JSON.stringify(result.rows, null, "    "));    
-    client.end();
-});
-
-app.get('/buses#nogo', function(req, res) {
-    res.send('Username: ' + req.query['placa']);
-});
 
 app.post('/buses/raro', function(req, res) {
-    var buses = require('./otros/funciones.js');
-    buses.insertarBuses(req,res);    
+    var placa=req.body.placa;
+    var modelo=req.body.modelo;
+    var costo=req.body.costo;
+    var tipo=req.body.tipo;
+    
+    var client = new pg.Client(conString);    
+    client.connect();
+    var query = client.query("insert into public.\"BUS\" (placa,modelo,costo,tipo_bus) values ('"+placa+"','"+modelo+"',"+costo+","+tipo+");");
+    query.on("row", function (row, result) {
+        result.addRow(row);
+    });
+    query.on("end", function (result) {
+        console.log(JSON.stringify(result.rows, null, "    "));    
+        client.end();
+    });
+
+    res.end("Insercion exitosa");    
 });
+
