@@ -83,3 +83,13 @@ query.on("end", function (result) {
     console.log(JSON.stringify(result.rows, null, "    "));    
     client.end();
 });
+
+app.get('/buses#nogo', function(req, res) {
+    res.send('Username: ' + req.query['placa']);
+});
+
+app.post('/buses/raro', function(req, res) {
+  var buses = require('./controllers/buses.js');
+//  buses.agregarTipoBus(req,res);
+    console.log("al fin!");
+});
