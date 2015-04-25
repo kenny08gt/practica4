@@ -113,3 +113,7 @@ app.post('/rutas/crear', function(req, res) {
     var f1=require("./otros/funciones");
     f1.crearRuta(req,res);
 });
+app.post('/rutas/punto', function(req, res) {
+    var f1=require("./otros/funciones");
+    f1.crearPunto(req,res);
+});

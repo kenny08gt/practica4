@@ -53,3 +53,22 @@ exports.crearRuta=function(req, res){
         res.end("Ruta creada");
     });
 };
+exports.crearPunto=function(req, res){
+    var nombre=req.body.nombrePunt;    
+    var tipo=req.body.tipo;    
+
+    var pg = require("pg");
+    var conString = "pg://postgres:123456@localhost:5432/practicaf1";
+    
+    var client = new pg.Client(conString);    
+    client.connect();
+    var query = client.query("insert into public.\"PUNTO\" (nombre,origen,destino) values('"+nombre+"','"+origen+"','"+destino+"');");
+    query.on("row", function (row, result) {
+        result.addRow(row);
+    });
+    query.on("end", function (result) {
+        console.log(JSON.stringify(result.rows, null, "    "));    
+        client.end();        
+        res.end("Ruta creada");
+    });
+};

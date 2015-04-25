@@ -23,13 +23,15 @@ block content
       br
       input(type="submit", value="Crear Ruta")
   div
-   h2 Borrar       
-    form(name="eliminarB", action="/buses/raro1", method="post")     
+   h2 Crear Punto
+    form(action="/rutas/punto1", method="post")     
      Ingrese el id del bus a eliminar
      br
-     input(type="number", name="idEliminar"  min="0")
+     input(type="text", name="nombrePunto")
      br
-     input(type="submit", value="Eliminar")
+     input(type="number", name="tipo" min="0")
+     br
+     input(type="submit", value="Crear punto")
   div
    h2 Crear  
    p 
