@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  p Bienvenido al ABC de buses
+  div
+   h2 Modificar
+  div
+   h2 Borrar
+  div
+   h2 Crear  
+   p 
+    |Ingrese la placa
+    form(name="crearB", action="/crearB", method="get")
+      input(type="text", name="placa") 
+      br
+      ingrese el modelo
+      br
+      input(type="text", name="modelo")
+      br
+      ingrese el costo
+      br
+      input(type="number",min="0.01",step="0.01", name="costo")
+      br
+      ingrese 1 si es tipo economico o 2 si es ejecutivo
+      br
+      input(type="number", name="tipo" max="2" min="1")
+      br
+      input(type="submit", value="Crear")
